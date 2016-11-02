@@ -7,14 +7,13 @@ package arrays;
  */
 public class BubbleSort {
 
-	public static void bubbleSort(int[] list) {
+	public static void bubbleSort(int[] list, int n) {
 		int i,j,temp;
-		int len = list.length;
 		//用于记录在某趟冒泡中是否有交换记录，若没有，则说明已有序。
 		boolean isExchanged;
-		for (i = 0; i < len - 1; i++) {
+		for (i = 0; i < n - 1; i++) {
 			isExchanged = false;
-			for (j = 0; j < len - 1 - i; j++)
+			for (j = 0; j < n - 1 - i; j++)
 				if (list[j] > list[j + 1]) {
 					temp = list[j];list[j] = list[j + 1];list[j + 1] = temp;
 					if(!isExchanged){
@@ -35,7 +34,7 @@ public class BubbleSort {
 		// 计算运行时间
 		long start = System.currentTimeMillis();
 
-		bubbleSort(list);
+		bubbleSort(list, list.length);
 		// 遍历显示
 //		for (int i = 0; i < list.length; i++) {
 //			System.out.print(" " + list[i]);

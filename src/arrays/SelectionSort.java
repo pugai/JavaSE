@@ -1,25 +1,25 @@
 package arrays;
 
 /**
- * 选择排序法，升序
+ * 直接选择排序法，升序
  * 
  * @author tianlong
  *
  */
 public class SelectionSort {
 
-	public static void selectionSort(int[] list) {
-		for (int i = 0; i < list.length - 1; i++) {
-			int currentMin = list[i];
-			int currentMinIndex = i;
-			for (int j = i + 1; j < list.length; j++)
-				if (currentMin > list[j]) {
-					currentMin = list[j];
-					currentMinIndex = j;
+	public static void selectionSort(int[] list, int n) {
+		int i,j,temp;
+		for (i = 0; i < n - 1; i++) {
+			int minIndex = i;
+			for (j = i + 1; j < n; j++)
+				if (list[minIndex] > list[j]) {
+					minIndex = j;
 				}
-			if (currentMinIndex != i) {
-				list[currentMinIndex] = list[i];
-				list[i] = currentMin;
+			if (minIndex != i) {
+				temp = list[minIndex];
+				list[minIndex] = list[i];
+				list[i] = temp;
 			}
 		}
 	}
@@ -33,12 +33,12 @@ public class SelectionSort {
 		// 计算运行时间
 		long start = System.currentTimeMillis();
 
-		selectionSort(list);
+		selectionSort(list, list.length);
 		// 遍历显示
-		// for (int i = 0; i < list.length; i++) {
-		// System.out.print(" " + list[i]);
-		// }
-		//
+//		 for (int i = 0; i < list.length; i++) {
+//		 System.out.print(" " + list[i]);
+//		 }
+		
 		long end = System.currentTimeMillis();
 		System.out.println("所花时间：" + (end - start));
 	}

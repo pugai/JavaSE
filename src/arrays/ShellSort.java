@@ -7,12 +7,11 @@ package arrays;
  */
 public class ShellSort {
 	
-	public static void shellSort(int[] list){
+	public static void shellSort(int[] list, int n){
 		int currentElem,i,j;
-		int len = list.length;
-		int d = len / 2;
+		int d = n / 2;
 		while(d >= 1){
-			for(i = d; i < len; i++){
+			for(i = d; i < n; i++){
 				currentElem = list[i];
 				j = i - d;
 				while(j >= 0 && list[j] > currentElem){
@@ -36,7 +35,7 @@ public class ShellSort {
 		// 计算运行时间
 		long start = System.currentTimeMillis();
 
-		shellSort(list);
+		shellSort(list, list.length);
 		 //遍历显示
 //		 for (int i = 0; i < list.length; i++) {
 //			 System.out.print(" " + list[i]);

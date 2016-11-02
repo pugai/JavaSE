@@ -23,7 +23,7 @@ public class First {
 	}
 
 	/**
-	 * 浼犲叆 2 涓湁搴忕殑鏁存暟鏁扮粍锛岀粍鎴愪竴涓湁搴忕殑鏁存暟鏁扮粍
+	 * 二路归并，两个有序子表归并成一个有序子表
 	 * 
 	 * @param a
 	 * @param b
@@ -57,7 +57,7 @@ public class First {
 	}
 
 	/**
-	 * 浠庢棤搴忔暣鏁版暟缁勶紙鍚嚑涓涪澶辩殑鏁帮級涓壘鍒板嚑涓涪澶辩殑鏁�
+	 * 从一串连续数字（打乱）中找出缺失的多个数字，
 	 * 
 	 * @param a
 	 */
@@ -66,7 +66,7 @@ public class First {
 		for (int i : a) {
 			System.out.print(i + " ");
 		}
-		BubbleSort.bubbleSort(a);
+		BubbleSort.bubbleSort(a, a.length);
 		System.out.print("\nsortedArray: ");
 		for (int i : a) {
 			System.out.print(i + " ");
@@ -80,7 +80,7 @@ public class First {
 	}
 
 	/**
-	 * 浠庢棤搴忔暣鏁版暟缁勶紙鍙惈涓�涓涪澶辩殑鏁帮級涓壘鍒颁竴涓涪澶辩殑鏁�
+	 * 从一串连续的数字（打乱）中找出缺失的一个数字，数字不重复
 	 * 
 	 * @param a
 	 */
@@ -89,7 +89,7 @@ public class First {
 		for (int i : a) {
 			System.out.print(i + " ");
 		}
-		BubbleSort.bubbleSort(a);
+		BubbleSort.bubbleSort(a, a.length);
 		System.out.print("\nsortedArray: ");
 		for (int i : a) {
 			System.out.print(i + " ");

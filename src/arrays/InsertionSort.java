@@ -8,10 +8,9 @@ package arrays;
  */
 public class InsertionSort {
 	
-	public static void insertionSort(int[] list) {
-		int length  = list.length;
+	public static void insertionSort(int[] list, int n) {
 		int i,j,currentElem;
-		for(i = 1; i < length; i++){
+		for(i = 1; i < n; i++){
 			currentElem = list[i];
 			j = i - 1;
 			while(j >= 0 && list[j] > currentElem){
@@ -31,7 +30,7 @@ public class InsertionSort {
 		// 计算运行时间
 		long start = System.currentTimeMillis();
 
-		insertionSort(list);
+		insertionSort(list,list.length);
 		// 遍历显示
 //		 for (int i = 0; i < list.length; i++) {
 //		 System.out.print(" " + list[i]);
