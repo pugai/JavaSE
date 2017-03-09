@@ -1,4 +1,4 @@
-package abstract_interfaces.geometric_object;
+package abstract_interfaces;
 
 public class Rectangle extends GeometricObject {
 	private double width;

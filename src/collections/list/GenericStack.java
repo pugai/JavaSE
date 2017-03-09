@@ -2,6 +2,7 @@ package collections.list;
 
 /**
  * 使用泛型定义一个存储元素的数据列表（栈）
+ * 使用ArrayList实现
  **/
 public class GenericStack<E> {
 	private java.util.ArrayList<E> list = new java.util.ArrayList<E>();

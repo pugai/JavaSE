@@ -11,6 +11,7 @@ public class Enum_season1 {
 
 	public static void main(String[] args) {
 		Season1 spring = Season1.SPRING;
+		System.out.println(spring.string);
 		System.out.println(spring);
 		spring.show();
 		System.out.println(spring.getSeasonName());
@@ -64,6 +65,7 @@ enum Season1 implements Info {
 			System.out.println("冬天里的一把火");
 		}
 	};
+	public String string = "nihao";
 	private final String seasonName;
 	private final String seasonDesc;
 

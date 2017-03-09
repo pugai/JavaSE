@@ -3,9 +3,9 @@ package collections.set;
 import java.util.Set;
 import java.util.TreeSet;
 
-import abstract_interfaces.geometric_object.Circle;
-import abstract_interfaces.geometric_object.GeometricObject;
-import abstract_interfaces.geometric_object.Rectangle;
+import abstract_interfaces.Circle;
+import abstract_interfaces.GeometricObject;
+import abstract_interfaces.Rectangle;
 
 /**
  * 测试带比较器的TreeSet

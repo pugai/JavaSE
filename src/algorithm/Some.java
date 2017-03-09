@@ -18,8 +18,9 @@ public class Some {
 		// findOneMissingNumber(oneMissingNumber);
 		// int[] severalMissingNumber = { 7, 8, 9, 6, 4, 2, 12, 14, 10 };
 		// findSeveralMissingNumbers(severalMissingNumber);
-		String string = "aaaabbbbddddcccc1111";
-		maxTimes(string);
+//		String string = "aaaabbbbddddcccc1111";
+//		maxTimes(string);
+		System.out.println(countBitOne(65530));
 	}
 
 	/**
@@ -132,6 +133,22 @@ public class Some {
 			i += j;
 		}
 		System.out.println("\nchar: " + maxChar + "\ntimes: " + max);
+	}
+	
+	
+	/**
+	 * 统计二进制数中位1的个数
+	 * @param x
+	 * @return
+	 */
+	public static int countBitOne(int x){
+		int count = 0;
+		while(x != 0){
+			count++;
+			x = x & (x - 1);
+			//x = x | (x + 1) 为数0的算法，同时修改循环条件;
+		}
+		return count;
 	}
 
 

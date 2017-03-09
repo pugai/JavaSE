@@ -2,7 +2,7 @@ package collections.set;
 
 import java.util.Comparator;
 
-import abstract_interfaces.geometric_object.GeometricObject;
+import abstract_interfaces.GeometricObject;
 
 /**
  * 用于TreeSet的比较器

@@ -84,7 +84,7 @@ public class ReadDataByScanner {
 	
 	@Test
 	public void testPattern2(){
-		String s = "123.206.216.23@01/12/2016aaaaa";
+		String s = "123.206.216.23@01/12/2016aa";
 		String pattern = "(\\d+[.]\\d+[.]\\d+[.]\\d+)@" + 
 				"(\\d{2}/\\d{2}/\\d{4})";
 		Scanner sc = new Scanner(s);

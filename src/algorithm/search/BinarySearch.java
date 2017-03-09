@@ -22,7 +22,7 @@ public class BinarySearch {
 				low = mid + 1;
 		}
 		
-		return -low -1;
+		return -(low + 1);
 	}
 	
 	public static void main(String[] args) {
