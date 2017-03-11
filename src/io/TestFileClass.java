@@ -11,7 +11,7 @@ import java.util.Date;
 public class TestFileClass {
 
 	public static void main(String[] args) {
-		File file = new File("images/1.jpg");  //不会创建文件，不管文件存不存在
+		File file = new File("image/1.jpg");  //不会创建文件，不管文件存不存在
 		System.out.println("Does it exist?" + file.exists());
 		System.out.println("Can it be written?" + file.canWrite());
 		System.out.println("Can it be read?" + file.canRead());

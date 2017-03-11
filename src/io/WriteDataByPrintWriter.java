@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 public class WriteDataByPrintWriter {
 
 	public static void main(String[] args) throws FileNotFoundException {
-		File file = new File("scores.txt");
+		File file = new File("file/scores.txt");
 		if(file.exists()){
 			System.out.println("File already exists");
 			System.exit(0);

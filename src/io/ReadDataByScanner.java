@@ -20,8 +20,9 @@ import jdk.nashorn.internal.runtime.linker.JavaAdapterFactory;
  */
 public class ReadDataByScanner {
 
-	public static void main(String[] args) throws FileNotFoundException {
-		File file = new File("scores.txt");
+	@Test
+	public void testScanner() throws FileNotFoundException {
+		File file = new File("file/scores.txt");
 		Scanner input = new Scanner(file);
 		// Scanner input = new Scanner(System.in); //从键盘输入
 		while (input.hasNext()) {
