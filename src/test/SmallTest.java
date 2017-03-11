@@ -98,8 +98,8 @@ public class SmallTest {
 		int[] r = new int[]{0,0,0};
 		int[] t = new int[]{1,2,3};
 		int i = 0;
-//		r[i] = t[++i];
-		r[++i] = t[i];
+		r[i] = t[++i];
+//		r[++i] = t[i];
 		System.out.println(Arrays.toString(r));
 		System.out.println(Arrays.toString(t));
 		System.out.println(i);
@@ -114,7 +114,6 @@ public class SmallTest {
 		// . 在正则表达式中代表任意字符，除去 行终结符 \n
 		String classFile = "com.jd.".replaceAll(".", "/") + "MyClass.class";
 	    System.out.println(classFile);
-	    
 	}
 	
 	public void test1(final Integer a){
