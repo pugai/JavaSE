@@ -45,9 +45,12 @@ public class Copy {
 
 		System.out.println("The file " + args[0] + "has" + input.available() + "bytes");
 
-		int r;
-		while ((r = input.read()) != -1)
-			output.write((byte) r);
+		byte[] b = new byte[1024];
+		int len;
+		while ((len = input.read(b)) != -1) {
+			output.write(b, 0, len);
+			output.flush();
+		}
 
 		input.close();
 		output.close();

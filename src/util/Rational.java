@@ -1,4 +1,4 @@
-package abstract_interfaces;
+package util;
 
 /**
  * 有理数类Rational
@@ -12,7 +12,9 @@ public class Rational extends Number implements Comparable<Rational> {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	// 分子
 	private long numerator = 0;
+	// 分母
 	private long denominator = 1;
 
 	public Rational() {

@@ -586,10 +586,12 @@ public class StringResolution {
 		String formula = "c==a+b";
 		StringResolution sr = new StringResolution(formula);
 		double variantValue[] = new double[] { 3.0, 2.0, 1.0 };
+		System.out.println(sr.getVariantCount());
 		System.out.println(sr.computer(variantValue, sr.getVariantCount()));
 		
 		String s = "(a+b)*c+d";
 		StringResolution sr1 = new StringResolution(s);
+		System.out.println(sr1.getVariantCount());
 		System.out.println(sr1.computer(new double[] {1.0, 3.7, 2.0, 4.5}, sr1.getVariantCount()));
 	}
 
