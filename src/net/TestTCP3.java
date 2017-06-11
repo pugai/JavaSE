@@ -1,4 +1,4 @@
-package networking;
+package net;
 
 import java.io.File;
 import java.io.FileInputStream;

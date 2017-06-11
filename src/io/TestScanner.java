@@ -18,7 +18,7 @@ import jdk.nashorn.internal.runtime.linker.JavaAdapterFactory;
  * @author tongji
  *
  */
-public class ReadDataByScanner {
+public class TestScanner {
 
 	@Test
 	public void testScanner() throws FileNotFoundException {

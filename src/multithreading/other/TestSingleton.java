@@ -4,18 +4,15 @@ package multithreading.other;
 //对于一般的方法内，使用同步代码块，可以考虑使用this。
 //对于静态方法而言，使用当前类本身充当锁。
 class Singleton {
-	private Singleton() {
-
-	}
+	private Singleton() {}
 
 	private static Singleton instance = null;
 
 	public static Singleton getInstance() {
-		
+		// 双重检验锁
 		if (instance == null) {
 			synchronized (Singleton.class) {
 				if (instance == null) {
-
 					instance = new Singleton();
 				}
 			}

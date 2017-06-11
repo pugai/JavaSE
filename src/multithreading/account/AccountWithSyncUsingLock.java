@@ -1,15 +1,16 @@
-package multithreading;
+package multithreading.account;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
-import java.util.concurrent.Semaphore;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * 只用一个许可的信号量可以用来模拟一个相互排斥的锁，确保同一时间只有一个线程可以访问deposit方法，线程同步
+ * 使用显式锁使线程同步
  * @author tianlong
  *
  */
-public class AccountWithSyncUsingSemaphore {
+public class AccountWithSyncUsingLock {
 
 	private static Account account = new Account();
 
@@ -34,26 +35,26 @@ public class AccountWithSyncUsingSemaphore {
 	}
 
 	private static class Account {
-		// 创建一个只有一个许可的信号量，用来模拟一个相互排斥的锁
-		private static Semaphore semaphore = new Semaphore(1);
+		//创建一个锁
+		private static Lock lock = new ReentrantLock();
 		private int balance = 0;
 
 		public int getBalance() {
 			return balance;
 		}
 
+		// 使用显式锁使线程同步
 		public void deposit(int amount) {
+			//获取锁
+			lock.lock();
 			try {
-				//获取一个许可
-				semaphore.acquire();
 				int newBalance = balance + amount;
-				Thread.sleep(5);
+				Thread.sleep(1);
 				balance = newBalance;
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			} finally {
-				//释放一个许可
-				semaphore.release();
+				lock.unlock();
 			}
 
 		}
