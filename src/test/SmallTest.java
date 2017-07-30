@@ -19,6 +19,7 @@ public class SmallTest {
 	
 
 	public static void main(String[] args) {
+		System.out.println(Integer.bitCount(7));
 		System.out.println("main");
 		// String s1 = "";
 		// String s2 = "aa";
@@ -74,6 +75,13 @@ public class SmallTest {
 	
 	@Test
 	public void testInteger() throws Exception{
+		int i = 11;
+		System.out.println(-i);
+		
+		int x = 10 ^ 5;
+		System.out.println(x);
+		
+		System.out.println(12.5 % 10);
 		
 		Integer i1 = new Integer(10);
 		Integer i2 = new Integer(10);
@@ -177,6 +185,7 @@ public class SmallTest {
 	public void testImage(){
 //		ImageIO
 	}
+	
 	
 	
 
