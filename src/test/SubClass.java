@@ -1,5 +1,7 @@
 package test;
 
+import java.io.IOException;
+
 public class SubClass extends SuperClass {
 
 	private int mSubX = 1;
@@ -22,6 +24,12 @@ public class SubClass extends SuperClass {
 		//考虑对象初始化顺序，运行时方法调用
 		SubClass sc = new SubClass();
 		sc.printX();
+	}
+	
+	@Override
+	public Integer testOverride(Number number) throws IOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
