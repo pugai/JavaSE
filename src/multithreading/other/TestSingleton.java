@@ -6,7 +6,7 @@ package multithreading.other;
 class Singleton {
 	private Singleton() {}
 
-	private static Singleton instance = null;
+	private static volatile Singleton instance = null;
 
 	public static Singleton getInstance() {
 		// 双重检验锁

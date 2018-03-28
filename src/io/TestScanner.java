@@ -14,10 +14,6 @@ import jdk.nashorn.internal.runtime.linker.JavaAdapterFactory;
  * @author tianlong
  *
  */
-/**
- * @author tongji
- *
- */
 public class TestScanner {
 
 	@Test
@@ -42,9 +38,9 @@ public class TestScanner {
 	 */
 	@Test
 	public void testDelimiter() {
-//		System.out.println(java.lang.Character.isWhitespace('\n'));
-//		System.out.println(java.lang.Character.isWhitespace('\t'));
-//		System.out.println(java.lang.Character.isWhitespace('\r'));
+		System.out.println(java.lang.Character.isWhitespace('\n'));
+		System.out.println(java.lang.Character.isWhitespace('\t'));
+		System.out.println(java.lang.Character.isWhitespace('\r'));
 		System.out.println(java.lang.Character.isWhitespace(' '));
 		Scanner scanner = new Scanner("1, 2, 3, 4");
 		scanner.useDelimiter("\\s*,\\s*");
@@ -89,8 +85,9 @@ public class TestScanner {
 		String pattern = "(\\d+[.]\\d+[.]\\d+[.]\\d+)@" + 
 				"(\\d{2}/\\d{2}/\\d{4})";
 		Scanner sc = new Scanner(s);
-		System.out.println(sc.hasNext(pattern));
-		System.out.println(sc.next(pattern));
+		System.out.println(sc.hasNext()); // true
+		System.out.println(sc.hasNext(pattern)); // false
+		System.out.println(sc.next(pattern)); // 异常
 		sc.close();
 	}
 

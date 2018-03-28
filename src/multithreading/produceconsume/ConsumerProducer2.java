@@ -15,7 +15,7 @@ public class ConsumerProducer2 {
 	public static void main(String[] args) {
 		// Create a thread pool with two threads
 		ExecutorService executor = Executors.newFixedThreadPool(3);
-		executor.execute(new ProducerTask());
+//		executor.execute(new ProducerTask());
 		executor.execute(new ProducerTask());
 		executor.execute(new ConsumerTask());
 		executor.shutdown();

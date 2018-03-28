@@ -3,6 +3,7 @@ package test;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -19,6 +20,11 @@ public class SmallTest {
 	
 
 	public static void main(String[] args) {
+		String ss = "\101";
+		System.out.println(ss);
+		String s = "学Java";
+		char c = '学';
+		System.out.println(s.getBytes().length);
 		System.out.println(Integer.bitCount(7));
 		System.out.println("main");
 		// String s1 = "";

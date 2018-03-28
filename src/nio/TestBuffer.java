@@ -130,6 +130,7 @@ public class TestBuffer {
 		System.out.println(buf.capacity());
 		
 		System.out.println((char) buf.get()); //证实数据仍存在
+		System.out.println(buf.position());
 		
 	}
 	
