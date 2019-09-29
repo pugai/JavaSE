@@ -20,6 +20,7 @@ public class SmallTest {
 	
 
 	public static void main(String[] args) {
+		String aaaa;
 		String ss = "\101";
 		System.out.println(ss);
 		String s = "学Java";
