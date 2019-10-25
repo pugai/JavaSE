@@ -45,6 +45,11 @@ class ReadWriteLockDemo {
 		try {
 			System.out.println(Thread.currentThread().getName() + ": " + num);
 			this.num = num;
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		} finally {
 			lock.writeLock().unlock();
 		}

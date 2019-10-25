@@ -27,8 +27,8 @@ public class TestLocalDateTime {
 	//6. ZoneDate  ZoneTime  ZoneDateTime  时区
 	@Test
 	public void test7() {
-//		Set<String> set = ZoneId.getAvailableZoneIds();
-//		set.forEach(System.out::println);
+		Set<String> set = ZoneId.getAvailableZoneIds();
+		set.forEach(System.out::println);
 		
 		LocalDateTime ldt = LocalDateTime.now(ZoneId.of("Asia/Shanghai"));
 		System.out.println(ldt);
@@ -145,6 +145,7 @@ public class TestLocalDateTime {
 		System.out.println(odt);
 		
 		System.out.println(ins1.toEpochMilli());
+		System.out.println(System.currentTimeMillis());
 		
 		Instant ins2 = Instant.ofEpochSecond(600);
 		System.out.println(ins2);

@@ -123,4 +123,20 @@ public class SimpleTest {
         }
     }
 
+    @Test
+    public void testParallelStream() {
+        List<Integer> a = new ArrayList<>();
+        for (int i = 0; i < 100; i++) {
+            a.add(i);
+        }
+        System.out.println(a);
+        List<Integer> b = a.stream().filter(i -> i % 2 == 1).collect(Collectors.toList());
+        System.out.println(b);
+        // parallelStream 也会保持原有顺序
+        List<Integer> c = a.parallelStream().filter(i -> i % 2 == 1).collect(Collectors.toList());
+        System.out.println(c);
+        // 测试方法引用
+        TestFunctionInterface t = String::codePointCount;
+    }
+
 }

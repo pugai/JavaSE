@@ -41,9 +41,9 @@ class LatchDemo implements Runnable {
 	public /*synchronized*/ void run() {
 
 		try {
-			for (int i = 0; i < 50000; i++) {
+			for (int i = 0; i < 500; i++) {
 				if (i % 2 == 0) {
-					System.out.println(i);
+					System.out.println(Thread.currentThread().getName() + " " +i);
 				}
 			}
 		} finally {
