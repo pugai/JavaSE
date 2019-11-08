@@ -6,16 +6,19 @@ import org.apache.commons.lang3.mutable.MutableInt;
 import org.junit.Test;
 import util.common.NumberUtils;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.lang.reflect.Field;
 import java.math.RoundingMode;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 /**
@@ -137,6 +140,50 @@ public class SimpleTest {
         System.out.println(c);
         // 测试方法引用
         TestFunctionInterface t = String::codePointCount;
+    }
+
+
+    private static final Pattern p0 = Pattern.compile("[\\n|\\r|\\t|\\s]");
+    private static final Pattern p1 = Pattern.compile("</p><p>");
+    private static final Pattern p2 = Pattern.compile("<[/]?p>");
+    private static final Pattern p3 = Pattern.compile("&nbsp;");
+
+    @Test
+    public void testString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("七见倾心：毒舌总裁娶佳妻").append("\r\n\r\n");
+
+        sb.append("01魔鬼娶妻").append("\r\n\r\n");
+        String content = "";
+        try {
+            content = new String(Files.readAllBytes(Paths.get("C:\\Users\\ctl\\Desktop\\7916604666267757175")), Charset.forName("UTF-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        content = p0.matcher(content).replaceAll("");
+        content = p1.matcher(content).replaceAll("\r\n");
+        content = p2.matcher(content).replaceAll("");
+        content = p3.matcher(content).replaceAll(" ");
+        sb.append(content).append("\r\n\r\n");
+
+        sb.append("02 “光荣”的任务").append("\r\n\r\n");
+        content = "";
+        try {
+            content = new String(Files.readAllBytes(Paths.get("C:\\Users\\ctl\\Desktop\\7917011485570257741")), Charset.forName("UTF-8"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        content = p0.matcher(content).replaceAll("");
+        content = p1.matcher(content).replaceAll("\r\n");
+        content = p2.matcher(content).replaceAll("");
+        content = p3.matcher(content).replaceAll(" ");
+        sb.append(content).append("\r\n\r\n");
+
+        try {
+            Files.write(Paths.get("C:\\Users\\ctl\\Desktop\\书籍.txt"), sb.toString().getBytes(Charset.forName("UTF-8")), StandardOpenOption.CREATE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
