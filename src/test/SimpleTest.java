@@ -186,4 +186,12 @@ public class SimpleTest {
         }
     }
 
+    @Test
+    public void testRegex() {
+        String result = "ab|cd";
+        System.out.println(result);
+        result = result.replaceAll("\\|", "\\\\|");
+        System.out.println(result);
+    }
+
 }
