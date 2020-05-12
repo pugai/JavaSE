@@ -41,6 +41,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.HttpParams;
 import org.apache.http.util.EntityUtils;  
 import org.junit.Test;
+import util.http.HttpClientUtils;
 
 //import com.fasterxml.jackson.databind.JavaType;
 //import com.fasterxml.jackson.databind.ObjectMapper;
@@ -120,12 +121,18 @@ public class HttpClientTest {
         // 创建默认的httpClient实例.    
         CloseableHttpClient httpclient = HttpClients.createDefault();  
         // 创建httppost    
-        HttpPost httppost = new HttpPost("http://tongjilab.cn:7788/login/");  
+        HttpPost httppost = new HttpPost("http://220.191.224.121:9082/yypt/search/book.xhtml");
         // 创建参数队列    
         List<NameValuePair> formparams = new ArrayList<NameValuePair>();  
-        formparams.add(new BasicNameValuePair("username", "admin"));  
-        formparams.add(new BasicNameValuePair("password", "ilove2017"));  
-        UrlEncodedFormEntity uefEntity;  
+        formparams.add(new BasicNameValuePair("sjrsfzh", "330621197101012151"));
+        formparams.add(new BasicNameValuePair("sjrxm", "陶国强"));
+        formparams.add(new BasicNameValuePair("sjrlxdh", "18817878571"));
+        formparams.add(new BasicNameValuePair("sjrybkh", "B3052158X"));
+        formparams.add(new BasicNameValuePair("qydm", "330602"));
+        formparams.add(new BasicNameValuePair("yddm", "zytzd"));
+        formparams.add(new BasicNameValuePair("xxdz", "陶堰镇104国道北面阿祥不锈钢门业"));
+        formparams.add(new BasicNameValuePair("random", "7194"));
+        UrlEncodedFormEntity uefEntity;
         try {  
             uefEntity = new UrlEncodedFormEntity(formparams, "UTF-8");  
             httppost.setEntity(uefEntity);  
@@ -337,6 +344,10 @@ public class HttpClientTest {
                 e.printStackTrace();  
             }  
         }
+    }
+
+    @Test
+    public void hackHouzhao() {
     }
     
     
