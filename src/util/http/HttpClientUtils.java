@@ -48,8 +48,8 @@ public class HttpClientUtils {
     private static final long KEEP_ALIVE_DURATION = 10000; // 长连接时间，10秒
 
     private static final int DEFAULT_MAX_THREADS = 500;
-    private static final int DEFAULT_CONNECT_TIMEOUT = 5000; //请求连接超时时间，5秒
-    private static final int DEFAULT_SOCKET_TIMEOUT = 10000; //连接建立后，返回结果的超时时间，10秒
+    private static final int DEFAULT_CONNECT_TIMEOUT = 10; //请求连接超时时间，5秒
+    private static final int DEFAULT_SOCKET_TIMEOUT = 60; //连接建立后，返回结果的超时时间，10秒
     private static final int DEFAULT_RETRY_COUNT = 0; // 重试次数，0
     private static final boolean DEFAULT_REQUEST_SENT_RETRY_ENABLED = false;
 
