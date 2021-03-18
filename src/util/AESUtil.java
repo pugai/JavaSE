@@ -107,9 +107,10 @@ public class AESUtil {
     }
 
     public static void main(String[] args) throws UnsupportedEncodingException {
-        // 使用示例
-        String content = "test";
-        byte[] key = "1234567812345678".getBytes("UTF-8");
+        // 使用示例，待加密内容
+        String content = "sourceUuid=aaa&articleUuid=bbb&link=xxx";
+        // 加密的key，16位，前后端保持一致
+        byte[] key = "Dv>3aS6wW/ju:G{%".getBytes("UTF-8");
         // 值为 ba572c602f340fd8be26038a0b79f107
         String encrypt = AESUtil.encryptHex(content.getBytes("UTF-8"), key);
         System.out.println(encrypt);

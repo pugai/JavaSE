@@ -1,5 +1,6 @@
 package test;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
@@ -9,6 +10,9 @@ import com.google.common.base.Splitter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.netease.snailreader.common.component.uri.UriParams;
+import com.netease.snailreader.common.component.uri.UriUtil;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -192,8 +196,32 @@ public class SimpleTest {
     public void testArray() {
 //        long[] aa = new long[0];
 //        System.out.println(aa.length);
-        User user = new User();
-        int len = user.getAa().length;
+//        User user = new User();
+//        int len = user.getAa().length;
+//        Map<String, String> map = new HashMap<>();
+//        map.put("1", "a");
+//        map.put("22", "b");
+//        map.put("33", "c");
+//        map.put("444", "d");
+//        map.keySet().removeIf(k -> k.length() == 1);
+//        System.out.println(map);
+//        String k = null;
+//        System.out.println(map.get(k));
+
+//        List<Long> list = Lists.newArrayList(1L, null, 2L);
+//        System.out.println(list.size());
+//        list = list.stream().filter(Objects::nonNull).collect(Collectors.toList());
+//        System.out.println(list);
+
+//        Integer i = null;
+//        System.out.println(i == 10000);
+
+    }
+
+    @Test
+    public void test() {
+        Pattern compile = Pattern.compile("((([0-9A-Za-z]{2,10})_)?([A-Z]{2}|EUEX)_)?[0-9a-fA-F]{32}");
+        System.out.println(compile.matcher("CN_a79cc95ace8d5b2726f2ad8171a1ffff").matches());
     }
 
     public static class User {
@@ -695,6 +723,13 @@ public class SimpleTest {
     }
 
     @Test
+    public void testAbs() {
+        int a = -12345;
+        int j = a >> 31;
+        System.out.println((a ^ j) - j);
+    }
+
+    @Test
     public void testBase64() {
 //        String url = "http://cs1h.wending.yuedu.163.com/route/wap2pay.do?page=sharePayment&rechargeUuid=7109ed4d-a7a2-409e-8b1e-8e67da29dda0";
 //
@@ -709,5 +744,138 @@ public class SimpleTest {
 
 
     }
+
+    @Test
+    public void testaaaaaa() {
+//        List<Integer> dd = Lists.newArrayList();
+//        for (int i = 1; i <= 1000; i++) {
+//            dd.add(i);
+//        }
+//        dd.parallelStream().forEach(i -> {
+//            if (i % 2 == 1) {
+//                throw new RuntimeException("error");
+//            }
+//            System.out.println(i);
+//        });
+        Object s = null;
+        System.out.println((String) s);
+    }
+
+    @Test
+    public void testChannelSign() {
+        String secretkey = "VjVIGRX5YgJCGQjC";
+        String params = "consumerkey=11790115&timestamp=1604647583669&sign=db044c2c123049115cd6e0910105cf73";
+        UriParams uriParams = UriUtil.parseQueryString(params, true);
+        Map<String, String> map = uriParams.asSingleValueMap();
+        System.out.println(map);
+
+        List<String> paramNameList = map.keySet().stream()
+                .filter(item -> !item.equalsIgnoreCase("sign"))
+                .collect(Collectors.toList());
+        paramNameList.add("secretkey");
+        Collections.sort(paramNameList);
+        StringBuilder sb = new StringBuilder();
+        for (String p : paramNameList) {
+            if(p.equals("secretkey")) {
+                sb.append(p).append("=").append(secretkey);
+                continue;
+            }
+            sb.append(p).append("=").append(map.get(p));
+        }
+        System.out.println(sb.toString());
+        String correctSign = DigestUtils.md5Hex(sb.toString());
+        String paramSign = map.get("sign");
+        System.out.println(correctSign);
+        System.out.println("check:" + correctSign.equals(paramSign));
+    }
+
+    @Test
+    public void testLinkedHashMap() {
+        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+        map.put("c", "cc");
+        map.put("d", "dd");
+        map.put("a", "aa");
+        map.put("b", "bb");
+//        System.out.println(map.keySet().iterator().next());
+        System.out.println(new ArrayList<>(map.keySet()));
+//        Map<String, Object> m = Maps.newHashMap();
+//        m.put("dd", 1);
+//        m.put("aa", "cc");
+//        System.out.println(m);
+//        System.out.println(JSONObject.toJSONString(m));
+    }
+
+    @Test
+    public void testJSON() {
+//        Object[] p = new Object[2];
+//        p[0] = new Person(1L, "dd", 3);
+//        p[1] = "string1";
+//        System.out.println(JSON.toJSONString(p));
+
+        Man o = new Man();
+        o.setAge(5);
+        o.setType("man1");
+        Human human1 = o;
+
+        Home home = new Home();
+        home.setName("home1");
+        home.setHuman(human1);
+        String s = JSONObject.toJSONString(home);
+        System.out.println(s);
+
+        Home hh = JSONObject.parseObject(s, Home.class);
+        System.out.println(hh);
+    }
+
+    @Test
+    public void testSwitch() {
+        int i = 0;
+        switch (i) {
+            case 0 : {
+                System.out.println("0");
+                break;
+            }
+            case 1:
+                System.out.println("1");
+                break;
+            case 2:
+                System.out.println("2");
+                break;
+            default:
+        }
+    }
+
+    @Test
+    public void testJdkSerial() throws IOException {
+        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("C:\\Users\\ctl\\Desktop\\pp.txt"));
+        OldPerson pp = new OldPerson("成成", 22);
+        oos.writeObject(pp);
+    }
+
+    @Test
+    public void testJdkSerial2() throws IOException, ClassNotFoundException {
+        ObjectInputStream ois = new ObjectInputStream(new FileInputStream("C:\\Users\\ctl\\Desktop\\pp.txt"));
+        OldPerson pp = (OldPerson) ois.readObject();
+        System.out.println(pp);
+    }
+
+    @Test
+    public void testrn() {
+        String s = "第1章\n" +
+                "时代？";
+        String s1 = s.replaceAll("[\\n\\r]", "");
+        System.out.println(s1);
+    }
+
+    @Test
+    public void testLimit() {
+        List<Integer> list = Lists.newArrayList(1, 2, 3);
+        List<Integer> collect = list.stream().limit(4).collect(Collectors.toList());
+        System.out.println(collect);
+    }
+
+
+
+
 
 }

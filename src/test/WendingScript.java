@@ -41,12 +41,12 @@ public class WendingScript {
 	private static boolean apiInsert(String title, String content, long index) throws Exception {
 		CloseableHttpClient httpClient = HttpClientUtils.getDefaultHttpClient();
 		Map<String, String> header = new HashMap<>();
-		header.put("Cookie", "NOVEL_FINANCE_BACKEND_U=0e772f0c-da88-4e5b-9a1f-4a28ce695b50-1602329108517");
+		header.put("Cookie", "NOVEL_FINANCE_BACKEND_U=ce605c64-dfe3-451e-a32b-146bc81f626f-1605774524140");
 		Map<String, String> params = new HashMap<>();
 		params.put("articleContent", content);
 		params.put("articleTitle", title);
 		params.put("indexId", String.valueOf(index));
-		params.put("bookId", "7866fb68f2144a7fad74d666571889c6_4");
+		params.put("bookId", "9bfc327ad6fb47f78c9d828dcc5038e4_4");
 		params.put("needPay", "1");
 		params.put("needAnti", "false");
 //        params.put("csrf_token", "3313fbcb5e0654489117eeed22498652");
@@ -85,13 +85,13 @@ public class WendingScript {
 	public void read() throws Exception {
 		System.out.println("startTime: " + new Date());
 		// todo 首行换行，注意首行的标题可能有特殊字符，导致无法匹配正则
-        String path = "C:\\Users\\ctl\\Desktop\\步步登高-续接文本1.txt";
+        String path = "C:\\Users\\ctl\\Desktop\\我的彪悍人生续接文档-预处理.txt";
 		BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path)));
 		int count = 0;
 		int count1 = 0;
 		List<String> error = Lists.newArrayList();
-		int startIndex = 811;
-		long startSort = 40051;
+		int startIndex = 679;
+		long startSort = 34150051;
 		String realTitle = null;
 		StringBuilder sb = new StringBuilder();
 		while (true) {
@@ -150,14 +150,17 @@ public class WendingScript {
 					startSort += 50;
 					startIndex++;
 				}
-//				String[] split = StringUtils.split(line, " ");
+				String[] split = StringUtils.split(line, "章");
 				realTitle = "第" + String.valueOf(startIndex) + "章";
 //				realTitle = line;
-//				if (split.length == 2) {
-//					realTitle = realTitle + " " + split[1];
-//				} else {
+				if (split.length == 2) {
+					realTitle = realTitle + "" + split[1];
+				} else {
 //					error.add(line);
-//				}
+				}
+				if (split.length > 2) {
+					throw new RuntimeException(line);
+				}
 				sb.delete(0, sb.length());
 				count++;
 			} else {
@@ -180,17 +183,20 @@ public class WendingScript {
 
 	// 1开棺有喜：冥夫求放过 + 2恐怖女网红(1)
 	private static final Pattern P1 = Pattern.compile("^(第|(番外))?[\\d-]+章?\\s.*$");
+	private static final Pattern P2 = Pattern.compile("^第.+章\\s.+$");
+	private static final Pattern P3 = Pattern.compile("^第[零一二三四五六七八九十百千]+章\\s.+$");
+	private static final Pattern P4 = Pattern.compile("^第\\d+章.*$");
 
 	private static boolean isTitle(String line) {
-		return PATTERN5.matcher(line).matches();
+		return P4.matcher(line).matches();
 	}
 
 	@Test
 	public void teeeee() {
 		// todo 标题中可能包含 \xa0 \u3000 空格问题
 		String s = "第221章  闲言还少吗";
-		System.out.println(isTitle(s));
-		System.out.println(string2Unicode(s));
+//		System.out.println(isTitle(s));
+//		System.out.println(string2Unicode(s));
 	}
 
 	/**
