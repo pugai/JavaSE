@@ -41,6 +41,10 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -872,6 +876,39 @@ public class SimpleTest {
         List<Integer> list = Lists.newArrayList(1, 2, 3);
         List<Integer> collect = list.stream().limit(4).collect(Collectors.toList());
         System.out.println(collect);
+    }
+
+    @Test
+    public void testSchedule() throws InterruptedException {
+        ScheduledExecutorService scheduledThreadPool = Executors.newScheduledThreadPool(5);
+
+        CountDownLatch latch = new CountDownLatch(1);
+        boolean[] initialized = new boolean[1];
+//        initialized[0] = false;
+
+        System.out.println("start");
+
+        scheduledThreadPool.scheduleAtFixedRate(() -> {
+            try {
+                Thread.sleep(5000L);
+            } catch (InterruptedException e) {
+            }
+            System.out.println(Thread.currentThread().getName() + " thread end");
+
+            if (!initialized[0]) {
+                latch.countDown();
+                initialized[0] = true;
+            }
+
+        }, 0,10, TimeUnit.SECONDS);
+
+        latch.await();
+        System.out.println("main");
+
+//        try {
+//            Thread.sleep(500000L);
+//        } catch (InterruptedException e) {
+//        }
     }
 
 
